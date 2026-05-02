@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Beca Santander–FIMPES Investigación 2025 · Paquete de Entregables · ULSB</title>
+<meta name="description" content="Paquete de entregables y evidencias del proyecto FIMPES 2025 de la Universidad La Salle Bajío. Microcredenciales DIC e INV en manufactura avanzada.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=DM+Sans:opsz,wght@9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ulsb-blue:#003366;
+  --ulsb-blue-light:#EAF2FA;
+  --ulsb-blue-deep:#001f3f;
+  --ulsb-gold:#C8A94A;
+  --green:#1F6F3A;
+  --amber:#A8820E;
+  --slate:#0F4C81;
+  --ink:#101418;
+  --ink-soft:#3a4250;
+  --muted:#6b7280;
+  --line:#e3e6ec;
+  --line-soft:#f1f3f7;
+  --bg:#fbfaf7;
+  --paper:#ffffff;
+  --radius:6px;
+  --shadow-card:0 1px 2px rgba(16,20,24,.04),0 4px 14px rgba(16,20,24,.05);
+  --shadow-hover:0 1px 2px rgba(16,20,24,.06),0 10px 28px rgba(16,20,24,.10);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"DM Sans",system-ui,sans-serif;font-size:16px;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.modal-open{overflow:hidden}
+a{color:var(--ulsb-blue);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+a:hover{border-bottom-color:var(--ulsb-blue)}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.85em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+.topbar{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);padding:14px 0;position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.topbar-id{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--ink-soft)}
+.topbar-id .dot{width:8px;height:8px;border-radius:50%;background:var(--ulsb-gold)}
+.topbar-nav{display:flex;gap:22px;font-size:13.5px;font-weight:500}
+.topbar-nav a{color:var(--ink-soft);border:none}
+.topbar-nav a:hover{color:var(--ulsb-blue)}
+
+.hero{position:relative;padding:80px 0 60px;overflow:hidden;background:radial-gradient(circle at 85% 15%,rgba(200,169,74,.10),transparent 50%),radial-gradient(circle at 15% 85%,rgba(0,51,102,.08),transparent 55%),var(--bg);border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ulsb-blue);font-weight:600;margin-bottom:24px}
+.eyebrow::before{content:"";width:32px;height:1px;background:var(--ulsb-gold)}
+h1.hero-title{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:clamp(2.4rem,4.8vw,3.8rem);line-height:1.05;letter-spacing:-.02em;color:var(--ulsb-blue-deep);margin:0 0 24px;font-variation-settings:"opsz" 144,"SOFT" 30}
+h1.hero-title em{font-style:italic;color:var(--ulsb-gold);font-variation-settings:"opsz" 144,"SOFT" 80}
+.hero-lead{font-size:1.1rem;color:var(--ink-soft);max-width:540px;margin:0 0 28px}
+.hero-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;font-size:14px;border-top:1px solid var(--line);padding-top:22px}
+.hero-meta dt{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.hero-meta dd{margin:0;color:var(--ink);font-weight:500}
+.hero-side{display:flex;flex-direction:column;gap:20px}
+
+.logos{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-card)}
+.logos-title{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:600}
+.logos-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:center}
+.logo-slot{display:flex;align-items:center;justify-content:center;height:50px;background:var(--line-soft);border:1px dashed var(--line);border-radius:4px;font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--muted);text-align:center;padding:4px;transition:all .2s;word-break:break-all;line-height:1.2}
+.logo-slot.has-img{background:transparent;border:none;padding:0}
+.logo-slot img{max-height:100%;max-width:100%;object-fit:contain}
+
+.stats{background:var(--ulsb-blue-deep);color:#fff;border-radius:var(--radius);padding:26px 24px;position:relative;overflow:hidden}
+.stats::after{content:"";position:absolute;top:-50%;right:-30%;width:200px;height:200px;background:radial-gradient(circle,var(--ulsb-gold) 0%,transparent 70%);opacity:.18}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:1}
+.stat-num{font-family:"Fraunces",Georgia,serif;font-size:2.1rem;font-weight:300;line-height:1;color:#fff}
+.stat-num em{font-style:normal;color:var(--ulsb-gold);font-weight:400}
+.stat-label{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:6px}
+
+.filterbar{position:sticky;top:55px;z-index:40;background:rgba(251,250,247,.96);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line);padding:18px 0}
+.filter-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.search-box{position:relative;flex:1;min-width:240px;max-width:380px}
+.search-box input{width:100%;padding:11px 14px 11px 40px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);font:inherit;font-size:14px;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+.search-box input:focus{outline:none;border-color:var(--ulsb-blue);box-shadow:0 0 0 3px rgba(0,51,102,.10)}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:500;padding:7px 12px;background:var(--paper);border:1px solid var(--line);border-radius:4px;color:var(--ink-soft);cursor:pointer;transition:all .15s;user-select:none}
+.chip:hover{border-color:var(--ulsb-blue);color:var(--ulsb-blue)}
+.chip.active{background:var(--ulsb-blue);border-color:var(--ulsb-blue);color:#fff}
+.result-count{font-size:13px;color:var(--muted);margin-left:auto}
+
+main{padding:60px 0 80px}
+.block{margin-bottom:64px;scroll-margin-top:140px}
+.block:last-child{margin-bottom:0}
+.block-head{display:flex;align-items:baseline;gap:24px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.block-letter{font-family:"Fraunces",Georgia,serif;font-size:3.6rem;line-height:1;font-weight:300;color:var(--ulsb-gold);letter-spacing:-.04em}
+.block-info h2{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:1.55rem;color:var(--ulsb-blue-deep);margin:0 0 4px;letter-spacing:-.01em}
+.block-info p{margin:0;color:var(--muted);font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s;position:relative;box-shadow:var(--shadow-card)}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:#cdd2db}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:12px}
+.card-code{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.05em;background:var(--ulsb-blue);color:#fff;padding:4px 9px;border-radius:3px}
+.status{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:3px 8px;border-radius:3px;display:inline-flex;align-items:center;gap:5px}
+.status::before{content:"";width:5px;height:5px;border-radius:50%;display:inline-block}
+.status.done{color:var(--green);background:#E8F2EB}
+.status.done::before{background:var(--green)}
+.status.programmed{color:var(--amber);background:#FBF3DC}
+.status.programmed::before{background:var(--amber)}
+.status.ready{color:var(--slate);background:#E5EDF6}
+.status.ready::before{background:var(--slate)}
+.status.published{color:var(--green);background:#E8F2EB}
+.status.published::before{background:var(--green)}
+.card-title{font-family:"Fraunces",Georgia,serif;font-size:1.12rem;font-weight:500;line-height:1.25;letter-spacing:-.005em;color:var(--ulsb-blue-deep);margin:0 0 10px}
+.card-desc{font-size:13.5px;color:var(--ink-soft);margin:0 0 18px;flex:1;line-height:1.55}
+.card-meta{display:flex;gap:14px;font-size:12px;color:var(--muted);padding-top:14px;border-top:1px solid var(--line-soft);margin-bottom:14px}
+.card-meta span{display:inline-flex;align-items:center;gap:5px}
+.card-meta svg{width:13px;height:13px;color:var(--muted)}
+.card-actions{display:flex;gap:8px}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;font:inherit;font-size:13px;font-weight:500;border-radius:4px;cursor:pointer;transition:all .15s;border:1px solid;text-decoration:none}
+.btn:hover{border-bottom-color:transparent}
+.btn-primary{background:var(--ulsb-blue);color:#fff;border-color:var(--ulsb-blue)}
+.btn-primary:hover{background:var(--ulsb-blue-deep);border-color:var(--ulsb-blue-deep);color:#fff}
+.btn-ghost{background:transparent;color:var(--ulsb-blue);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ulsb-blue);background:var(--ulsb-blue-light);color:var(--ulsb-blue)}
+.btn svg{width:14px;height:14px}
+.card.pending{background:repeating-linear-gradient(135deg,var(--paper),var(--paper) 10px,#fdfcf7 10px,#fdfcf7 20px);border-style:dashed}
+
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,18,22,.78);backdrop-filter:blur(4px);z-index:100;display:none;animation:fadeIn .2s ease-out}
+.modal-backdrop.open{display:flex;flex-direction:column;padding:24px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--paper);border-radius:var(--radius) var(--radius) 0 0;border-bottom:1px solid var(--line);gap:16px}
+.modal-title{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.modal-title .card-code{flex-shrink:0}
+.modal-title h3{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:1.05rem;color:var(--ulsb-blue-deep);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.modal-actions{display:flex;gap:8px;flex-shrink:0}
+.modal-close{width:36px;height:36px;border-radius:4px;background:transparent;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.modal-close:hover{background:var(--line-soft);color:var(--ink)}
+.modal-body{flex:1;background:var(--paper);border-radius:0 0 var(--radius) var(--radius);overflow:hidden;position:relative}
+.modal-body iframe,.modal-body object{width:100%;height:100%;border:0;display:block}
+.pdf-fallback{height:100%;display:flex;align-items:center;justify-content:center;padding:40px;text-align:center;background:#f8fafc;color:var(--ink-soft);font-family:"DM Sans",system-ui,sans-serif}
+.pdf-fallback-box{max-width:520px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-card)}
+.pdf-fallback-box h4{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;font-weight:500;color:var(--ulsb-blue-deep);margin:0 0 10px}
+.pdf-fallback-box p{margin:0 0 18px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.pdf-fallback-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pdf-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--paper);color:var(--muted);font-size:14px;z-index:0}
+.pdf-loading.hidden{display:none}
+@media(max-width:600px){.modal-backdrop.open{padding:0}.modal-header{border-radius:0}.modal-body{border-radius:0}.modal-title h3{font-size:.9rem}.modal-actions .btn span{display:none}}
+
+.notes{background:var(--paper);border-top:1px solid var(--line);padding:60px 0}
+.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:800px){.notes-grid{grid-template-columns:1fr;gap:36px}}
+.notes h3{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:1.45rem;color:var(--ulsb-blue-deep);margin:0 0 18px}
+.notes ul{margin:0;padding-left:20px;color:var(--ink-soft)}
+.notes li{margin-bottom:10px;font-size:14.5px;line-height:1.6}
+.notes li strong{color:var(--ink);font-weight:600}
+
+footer{background:var(--ulsb-blue-deep);color:rgba(255,255,255,.85);padding:60px 0 30px;font-size:14px}
+footer h4{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:1.1rem;color:#fff;margin:0 0 14px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:48px}
+@media(max-width:800px){.footer-grid{grid-template-columns:1fr;gap:32px}}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:8px;font-size:13.5px;color:rgba(255,255,255,.7)}
+footer a{color:rgba(255,255,255,.85);border-bottom-color:rgba(255,255,255,.2)}
+footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12.5px;color:rgba(255,255,255,.55)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="topbar-id">
+      <span class="dot"></span>
+      <span class="mono" style="text-transform:uppercase;letter-spacing:.05em;font-size:11.5px">Beca Santander–FIMPES Investigación 2025</span>
+    </div>
+    <nav class="topbar-nav">
+      <a href="#bloque-A">Planeación</a>
+      <a href="#bloque-B">Manuales</a>
+      <a href="#bloque-C">Evaluación</a>
+      <a href="#bloque-D">Registro</a>
+      <a href="#bloque-E">Software</a>
+      <a href="#bloque-F">Difusión</a>
+      <a href="#bloque-G">Validación</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">Universidad La Salle Bajío · Mayo 2026</div>
+      <h1 class="hero-title">Paquete de entregables<br>y <em>evidencias</em> de cierre</h1>
+      <p class="hero-lead">Microcredenciales DIC e INV en manufactura avanzada: aplicaciones de IA en inspección óptica, ingeniería inversa y análisis computacional. Validación internacional con UniLaSalle Amiens, Francia.</p>
+      <dl class="hero-meta">
+        <div><dt>Responsable principal</dt><dd>Dr. Jorge Ramón Parra Michel</dd></div>
+        <div><dt>Institución</dt><dd>Universidad La Salle Bajío</dd></div>
+        <div><dt>Validación internacional</dt><dd>UniLaSalle Amiens · Francia</dd></div>
+        <div><dt>Periodo de ejecución</dt><dd>Octubre 2025 – Mayo 2026</dd></div>
+      </dl>
+    </div>
+    <aside class="hero-side">
+      <div class="logos">
+        <div class="logos-title">Programa · Financiamiento · Validación</div>
+        <div class="logos-row">
+          <div class="logo-slot" data-logo="logo_lasalle.png">logo_lasalle.png</div>
+          <div class="logo-slot" data-logo="Santander.jpg">Santander.jpg</div>
+          <div class="logo-slot" data-logo="logoFimpes.jpg">logoFimpes.jpg</div>
+          <div class="logo-slot" data-logo="logo_unilasalle_amiens.png">logo_unilasalle_amiens.png</div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stats-grid">
+          <div><div class="stat-num"><em>22</em></div><div class="stat-label">Entregables</div></div>
+          <div><div class="stat-num"><em>7</em></div><div class="stat-label">Bloques</div></div>
+          <div><div class="stat-num">~<em>650</em></div><div class="stat-label">Páginas</div></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="filterbar">
+  <div class="wrap filter-row">
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="text" placeholder="Buscar entregable, código, descripción…" autocomplete="off">
+    </div>
+    <div class="chips" id="chips">
+      <span class="chip active" data-filter="all">Todos</span>
+      <span class="chip" data-filter="A">A · Planeación</span>
+      <span class="chip" data-filter="B">B · Manuales</span>
+      <span class="chip" data-filter="C">C · Evaluación</span>
+      <span class="chip" data-filter="D">D · Registro</span>
+      <span class="chip" data-filter="E">E · Software</span>
+      <span class="chip" data-filter="F">F · Difusión</span>
+      <span class="chip" data-filter="G">G · Validación</span>
+    </div>
+    <div class="result-count" id="resultCount">22 entregables</div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div id="blocks"></div>
+  </div>
+</main>
+
+<div class="modal-backdrop" id="pdfModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-header">
+    <div class="modal-title">
+      <span class="card-code" id="modalCode">—</span>
+      <h3 id="modalTitle">Visor PDF</h3>
+    </div>
+    <div class="modal-actions">
+      <a class="btn btn-ghost" id="modalDownload" download href="#" style="flex:0 0 auto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Descargar</span>
+      </a>
+      <a class="btn btn-ghost" id="modalOpen" target="_blank" rel="noopener" href="#" style="flex:0 0 auto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Pestaña nueva</span>
+      </a>
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="pdf-loading" id="pdfLoading">Cargando visor PDF…</div>
+    <object id="modalObject" data="" type="application/pdf" aria-label="Visor PDF">
+      <div class="pdf-fallback">
+        <div class="pdf-fallback-box">
+          <h4>El visor embebido no pudo cargar el PDF</h4>
+          <p>El archivo existe y puede abrirse en una pestaña nueva o descargarse. Algunos navegadores bloquean PDFs dentro de ventanas embebidas, porque aparentemente incluso ver un PDF necesita drama.</p>
+          <div class="pdf-fallback-actions">
+            <a class="btn btn-primary" id="modalFallbackOpen" href="#" target="_blank" rel="noopener" style="flex:0 0 auto">Abrir en pestaña nueva</a>
+            <a class="btn btn-ghost" id="modalFallbackDownload" href="#" download style="flex:0 0 auto">Descargar PDF</a>
+          </div>
+        </div>
+      </div>
+    </object>
+  </div>
+</div>
+
+<section class="notes">
+  <div class="wrap notes-grid">
+    <div>
+      <h3>Notas de uso</h3>
+      <ul>
+        <li><strong>Acceso al paquete:</strong> todos los entregables disponibles en línea para revisión por Santander Universidades, FIMPES y la Universidad La Salle Bajío.</li>
+        <li><strong>Trazabilidad:</strong> cada manual y formato declara el reconocimiento al programa Santander–FIMPES y a la colaboración con UniLaSalle Amiens.</li>
+        <li><strong>Licenciamiento:</strong> los volúmenes LaTeX (Manuales DIC e INV y Marco de Referencia) se publicarán bajo licencia compatible con diseminación abierta tras el cierre formal de la beca.</li>
+        <li><strong>Registro estatal:</strong> formatos D1 y D2 listos para registro en el padrón de microcredenciales del Gobierno del Estado de Guanajuato (microcredenciales.gob.mx) en la convocatoria de junio 2026.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>G1 · Estancia UniLaSalle Amiens</h3>
+      <ul>
+        <li><strong>Periodo:</strong> 18–29 de mayo de 2026.</li>
+        <li><strong>Validador internacional:</strong> Prof. Jérôme Fortin. Apoyo de laboratorio: Sébastian Gomez (PAUC).</li>
+        <li><strong>Contenido:</strong> versión intensiva de 15 h combinando DIC y escaneo 3D, conservando secuencia temática y criterios de evaluación de las microcredenciales formales.</li>
+        <li><strong>Integración de evidencias:</strong> registros fotográficos, listas de asistencia, productos de los participantes y constancia firmada se integran al paquete mediante addenda posterior al regreso de la estancia (≥ 30 mayo 2026).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Proyecto</h4>
+        <p style="color:rgba(255,255,255,.7);margin:0 0 14px;font-size:13.5px;line-height:1.6">Desarrollo y Evaluación de Competencias en Manufactura Avanzada: Aplicaciones de IA en Inspección Óptica, Ingeniería Inversa y Análisis Computacional.</p>
+        <p class="mono" style="color:rgba(255,255,255,.55);margin:0;font-size:11.5px;letter-spacing:.05em">Beca Santander–FIMPES Investigación 2025</p>
+      </div>
+      <div>
+        <h4>Equipo</h4>
+        <ul>
+          <li>Dr. Jorge Ramón Parra Michel<br><span style="font-size:11.5px;color:rgba(255,255,255,.5)">Responsable principal</span></li>
+          <li>Dr. Marco Antonio Escobar Acevedo<br><span style="font-size:11.5px;color:rgba(255,255,255,.5)">Colaborador · FEA / ML</span></li>
+          <li>Dr. Emmanuel Ovalle Magallanes<br><span style="font-size:11.5px;color:rgba(255,255,255,.5)">Colaborador · IA</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:jrparra@lasallebajio.edu.mx">jrparra@lasallebajio.edu.mx</a></li>
+          <li>Ext. 2610</li>
+          <li>Universidad La Salle Bajío<br>León, Guanajuato, México</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Universidad La Salle Bajío · Todos los derechos reservados</div>
+      <div class="mono">Cierre · Mayo 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const ENTREGABLES = [
+  {block:"A",code:"A1",title:"Propuesta técnica original",desc:"Propuesta entregada en convocatoria 2025: justificación, objetivos, metodología, cronograma, presupuesto, entregables comprometidos, CVs.",file:"A1_Propuesta_Tecnica_original.pdf",format:"PDF",pages:29,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A2",title:"Informe diagnóstico y alineación estratégica",desc:"Análisis de demandas industriales del Bajío, capacidades ULSB, brechas, consulta con sector productivo. Decisión justificada de operacionalizar DIC + INV.",file:"A2_Informe_Diagnostico_Alineacion.pdf",format:"PDF",pages:24,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A3",title:"Análisis funcional y perfiles técnicos",desc:"Descomposición funcional INV/DIC, vinculación con procesos productivos, perfil objetivo (profesional I+D), distribución horaria por nivel.",file:"A3_Analisis_Funcional_Perfiles_Tecnicos.pdf",format:"PDF",pages:18,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A4",title:"Diseño del marco de competencias técnicas",desc:"Subcompetencias por microcredencial, niveles de dominio progresivos, evidencias verificables, alineación MMC–ESCO–O*NET.",file:"A4_Diseno_del_marco_de_competencias_tecnicas.pdf",format:"PDF",pages:29,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A5",title:"Estructura curricular de microcredenciales",desc:"Temarios, resultados de aprendizaje, actividades, sistema de evaluación por niveles, KPIs cuantitativos, checklist maestro.",file:"A5_Estructura_Curricular_de_Microcredenciales.pdf",format:"PDF",pages:22,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A6",title:"Marco de Referencia y Taxonomía MMX-FP-CT-ND",desc:"Mapeo formal del piloto 2026: ajustes A–G justificados, trayectorias formativas, acumulabilidad, indicadores de impacto, alineación MMC–ESCO–O*NET.",file:"A6_Marco_de_Referencia_y_Taxonomia_MMX_FP_CT_ND.pdf",format:"PDF",pages:23,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A7",title:"Cédula de síntesis del proyecto",desc:"Resumen ejecutivo institucional para registro y difusión.",file:"A7_Cedula_Sintesis_Proyecto_FIMPES_DIC_INV.xlsx",format:"XLSX",pages:null,status:"done",statusLabel:"Entregado"},
+  {block:"A",code:"A8",title:"Checklist Maestro de Microcredenciales",desc:"Lista de verificación por fase (1–6) para auditoría de avance y cumplimiento de entregables.",file:"A8_Checklist_Maestro_de_Microcredenciales.pdf",format:"PDF",pages:23,status:"done",statusLabel:"Entregado"},
+  {block:"B",code:"B1",title:"Manual Técnico DIC — Prueba Piloto",desc:"Manual completo del participante: 7 temas, 2 niveles. Cobertura: fundamentos DIC, patrón moteado, calibración, DIC 2D, estéreo 3D, GUM, correlación DIC–FEA.",file:"B1_Manual_tecnico_DIC_Prueba_Piloto.pdf",format:"PDF",pages:152,status:"done",statusLabel:"Entregado"},
+  {block:"B",code:"B2",title:"Manual Técnico INV — Prueba Piloto",desc:"Manual completo del participante: 6 temas, 2 niveles. Cobertura: escaneo 3D, captura, fotogrametría SfM, mallado, primitivas, NURBS y comparación CAD–scan.",file:"B2_Manual_tecnico_INV_Prueba_Piloto.pdf",format:"PDF",pages:114,status:"done",statusLabel:"Entregado"},
+  {block:"B",code:"B3",title:"Manual extendido FEA (referencia)",desc:"Material de soporte para Tema 7 DIC (correlación DIC–FEA): ciclo de validación, descomposición del error, identificación de propiedades por método inverso.",file:"B3_Manual_Extendido_FEA_Referencia.pdf",format:"PDF",pages:30,status:"done",statusLabel:"Entregado"},
+  {block:"C",code:"C1",title:"Instrumentos de Evaluación — DIC",desc:"Rúbricas por nivel, checklists técnicos, criterios cuantitativos (SNR ≥ 20 dB, error vs galga ≤ 5%, reproyección ≤ 0.30 px, R² ≥ 0.92, U ≤ 8%).",file:"C1_Instrumentos_Evaluacion_DIC.pdf",format:"PDF",pages:23,status:"done",statusLabel:"Entregado"},
+  {block:"C",code:"C2",title:"Instrumentos de Evaluación — INV",desc:"Rúbricas por tema, checklists de captura/registro/mallado, criterios cuantitativos (cobertura ≥ 90%, RMS ≤ 0.30 mm, primitivas R² > 0.95, p95 ≤ 0.25 mm).",file:"C2_Instrumentos_Evaluacion_INV.pdf",format:"PDF",pages:21,status:"done",statusLabel:"Entregado"},
+  {block:"D",code:"D1",title:"Formato Microcredencial — DIC",desc:"Plantilla oficial poblada para registro: identificación, perfil objetivo, RA, criterios, metadatos para insignias SEG/Open Badges 3.0. Rúbrica COEPES: 79/80.",file:"D1_Formato_Microcredencial_DIC.xlsx",format:"XLSX",pages:null,status:"ready",statusLabel:"Listo para registro"},
+  {block:"D",code:"D2",title:"Formato Microcredencial — INV",desc:"Plantilla oficial poblada para registro INV. Puntuación rúbrica COEPES Guanajuato MICROGTO-001: 80/80.",file:"D2_Formato_Microcredencial_INV.xlsx",format:"XLSX",pages:null,status:"ready",statusLabel:"Listo para registro"},
+  {block:"E",code:"E1",title:"DIC_2D_V3.1 — Software de Correlación Digital de Imágenes 2D",desc:"Paquete Python open-source. Pipeline modular de 10 etapas: calibración, ROI, NCC con step analysis, IC-GN avanzado (afín 6-DOF, B-spline), tensores, GUM, dashboard.",file:"E1_DIC_2D_V3.1.zip",format:"ZIP",pages:null,status:"done",statusLabel:"Entregado"},
+  {block:"E",code:"E2",title:"Manual de Usuario DIC_2D_V3",desc:"Documentación técnica del software: arquitectura, módulos, dependencias, parámetros, ejemplos de uso, persistencia .dicv3, flujo de análisis end-to-end.",file:"E2_Manual_Codigo_DIC_2D_V3.pdf",format:"PDF",pages:32,status:"done",statusLabel:"Entregado"},
+  {block:"F",code:"F1",title:"Artículo Q1 — Optics and Lasers in Engineering",desc:"Parra-Michel, Ovalle-Magallanes, Aguilar-Vargas (2026). \"Physics-informed hybrid U-Net architecture for phase-to-height reconstruction…\" Vol. 201, art. 109693.",file:"F1_Articulo_Q1_Optics.pdf",format:"PDF",pages:16,status:"published",statusLabel:"Publicado"},
+  {block:"F",code:"F2",title:"Artículo de congreso — ICECET 2026 (Roma, Italia)",desc:"\"Solving the Phase Unwrapping Problem in Dual Divergent Projection Systems Using a Physics-Informed Neural Network.\" IEEE 979-8-3315-3208-0/26.",file:"F2_Articulo_de_congreso_ICECET_2026.pdf",format:"PDF",pages:5,status:"done",statusLabel:"Aceptado"},
+  {block:"F",code:"F3",title:"Perfil único del investigador",desc:"CV resumido y perfil de Google Académico actualizado para el cierre formal del proyecto.",file:"F3_Perfil_Unico_del_Investigador.pdf",format:"PDF",pages:16,status:"done",statusLabel:"Entregado"},
+  {block:"G",code:"G1",title:"Curso piloto en UniLaSalle Amiens — DIC + Escaneo 3D",desc:"Estancia de validación internacional 18–29 mayo 2026. Versiones intensivas de prueba piloto para DIC e INV. Validador: Prof. Jérôme Fortin. Evidencias en sitio se integran mediante addenda posterior.",file:null,format:"Evidencias en sitio",pages:null,status:"programmed",statusLabel:"Programado"},
+  {block:"G",code:"G2",title:"Carta-respuesta UniLaSalle Amiens",desc:"Comunicación formal de aceptación y plan de la estancia internacional.",file:"G2_Carta_respuesta_UniLaSalle_Amiens.pdf",format:"PDF",pages:21,status:"done",statusLabel:"Entregado"},
+];
+
+const BLOCKS = {
+  A:{title:"Documentos de planeación y marco",sub:"Diagnóstico, propuesta, marco de competencias y estructura curricular"},
+  B:{title:"Manuales técnicos del participante",sub:"Microcredenciales DIC e INV · Material extendido FEA"},
+  C:{title:"Instrumentos de evaluación",sub:"Rúbricas, checklists y criterios cuantitativos por desempeño"},
+  D:{title:"Formatos para registro institucional",sub:"Plantillas oficiales pobladas para registro estatal"},
+  E:{title:"Software y código",sub:"DIC_2D_V3.1 open-source · Manual de usuario"},
+  F:{title:"Productos científicos",sub:"Publicaciones indexadas y perfil del investigador"},
+  G:{title:"Validación internacional UniLaSalle Amiens",sub:"Estancia 18–29 mayo 2026 · Validador: Prof. Jérôme Fortin"}
+};
+
+const DOC_PATH = "docs/";
+
+function renderBlocks(filterBlock="all", search=""){
+  const root = document.getElementById("blocks");
+  root.innerHTML = "";
+  const search_l = search.trim().toLowerCase();
+  let visible = 0;
+  Object.entries(BLOCKS).forEach(([letter, info])=>{
+    if(filterBlock!=="all" && filterBlock!==letter) return;
+    const items = ENTREGABLES.filter(e=>e.block===letter).filter(e=>{
+      if(!search_l) return true;
+      return (e.code+" "+e.title+" "+e.desc).toLowerCase().includes(search_l);
+    });
+    if(items.length===0) return;
+    visible += items.length;
+    const sec = document.createElement("section");
+    sec.className = "block";
+    sec.id = "bloque-"+letter;
+    sec.innerHTML = `
+      <div class="block-head">
+        <div class="block-letter">${letter}</div>
+        <div class="block-info"><h2>${info.title}</h2><p>${info.sub}</p></div>
+      </div>
+      <div class="cards">${items.map(cardHTML).join("")}</div>`;
+    root.appendChild(sec);
+  });
+  document.getElementById("resultCount").textContent = visible === 1 ? "1 entregable" : `${visible} entregables`;
+}
+
+function cardHTML(e){
+  const isPDF = e.format === "PDF";
+  const pending = !e.file;
+  const fileURL = e.file ? DOC_PATH + e.file : "#";
+  const meta = [];
+  meta.push(`<span title="Formato">${iconFile()} ${e.format}</span>`);
+  if(e.pages) meta.push(`<span title="Páginas">${iconPage()} ${e.pages} pp.</span>`);
+  return `
+    <article class="card${pending?" pending":""}" data-code="${e.code}">
+      <div class="card-top">
+        <span class="card-code">${e.code}</span>
+        <span class="status ${e.status}">${e.statusLabel}</span>
+      </div>
+      <h3 class="card-title">${e.title}</h3>
+      <p class="card-desc">${e.desc}</p>
+      <div class="card-meta">${meta.join("")}</div>
+      <div class="card-actions">
+        ${pending ? `<button class="btn btn-ghost" disabled style="opacity:.6;cursor:not-allowed">${iconClock()} Disponible tras 30 mayo 2026</button>`
+        : isPDF ? `<button class="btn btn-primary" onclick="openPDF('${e.code}')">${iconEye()} Visualizar</button><a class="btn btn-ghost" href="${fileURL}" download>${iconDownload()} Descargar</a>`
+        : `<a class="btn btn-primary" href="${fileURL}" download>${iconDownload()} Descargar ${e.format}</a>`}
+      </div>
+    </article>`;
+}
+
+function iconFile(){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`}
+function iconPage(){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>`}
+function iconEye(){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>`}
+function iconDownload(){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`}
+function iconClock(){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`}
+
+function openPDF(code){
+  const e = ENTREGABLES.find(x=>x.code===code);
+  if(!e || !e.file) return;
+  const url = DOC_PATH + e.file;
+  const viewerURL = url + "#toolbar=1&navpanes=0&scrollbar=1&view=FitH";
+
+  document.getElementById("modalCode").textContent = e.code;
+  document.getElementById("modalTitle").textContent = e.title;
+  document.getElementById("modalDownload").href = url;
+  document.getElementById("modalOpen").href = url;
+  document.getElementById("modalFallbackOpen").href = url;
+  document.getElementById("modalFallbackDownload").href = url;
+
+  const loading = document.getElementById("pdfLoading");
+  const objectViewer = document.getElementById("modalObject");
+  loading.classList.remove("hidden");
+  objectViewer.data = viewerURL;
+
+  window.setTimeout(()=>{
+    loading.classList.add("hidden");
+  }, 900);
+
+  document.getElementById("pdfModal").classList.add("open");
+  document.body.classList.add("modal-open");
+}
+function closePDF(){
+  document.getElementById("pdfModal").classList.remove("open");
+  document.getElementById("modalObject").data = "";
+  document.getElementById("modalFallbackOpen").href = "#";
+  document.getElementById("modalFallbackDownload").href = "#";
+  document.getElementById("pdfLoading").classList.remove("hidden");
+  document.body.classList.remove("modal-open");
+}
+document.getElementById("modalClose").addEventListener("click", closePDF);
+document.getElementById("pdfModal").addEventListener("click", e=>{
+  if(e.target.id === "pdfModal") closePDF();
+});
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape") closePDF();
+});
+
+let currentFilter = "all", currentSearch = "";
+document.getElementById("chips").addEventListener("click", e=>{
+  if(!e.target.classList.contains("chip")) return;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+  e.target.classList.add("active");
+  currentFilter = e.target.dataset.filter;
+  renderBlocks(currentFilter, currentSearch);
+});
+document.getElementById("search").addEventListener("input", e=>{
+  currentSearch = e.target.value;
+  renderBlocks(currentFilter, currentSearch);
+});
+renderBlocks();
+
+document.querySelectorAll(".logo-slot").forEach(slot=>{
+  const filename = slot.dataset.logo;
+  if(!filename) return;
+  const img = new Image();
+  img.alt = filename;
+  img.onload = ()=>{
+    slot.classList.add("has-img");
+    slot.innerHTML = "";
+    slot.appendChild(img);
+  };
+  img.src = filename;
+});
+</script>
+</body>
+</html>
