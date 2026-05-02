@@ -172,6 +172,7 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       <span class="mono" style="text-transform:uppercase;letter-spacing:.05em;font-size:11.5px">Beca Santander–FIMPES Investigación 2025</span>
     </div>
     <nav class="topbar-nav">
+      <a href="#bloque-R">Reporte final</a>
       <a href="#bloque-A">Planeación</a>
       <a href="#bloque-B">Manuales</a>
       <a href="#bloque-C">Evaluación</a>
@@ -208,8 +209,8 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       </div>
       <div class="stats">
         <div class="stats-grid">
-          <div><div class="stat-num"><em>22</em></div><div class="stat-label">Entregables</div></div>
-          <div><div class="stat-num"><em>7</em></div><div class="stat-label">Bloques</div></div>
+          <div><div class="stat-num"><em>24</em></div><div class="stat-label">Entregables</div></div>
+          <div><div class="stat-num"><em>8</em></div><div class="stat-label">Bloques</div></div>
           <div><div class="stat-num">~<em>650</em></div><div class="stat-label">Páginas</div></div>
         </div>
       </div>
@@ -225,6 +226,7 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
     </div>
     <div class="chips" id="chips">
       <span class="chip active" data-filter="all">Todos</span>
+      <span class="chip" data-filter="R">R · Reporte final</span>
       <span class="chip" data-filter="A">A · Planeación</span>
       <span class="chip" data-filter="B">B · Manuales</span>
       <span class="chip" data-filter="C">C · Evaluación</span>
@@ -233,7 +235,7 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       <span class="chip" data-filter="F">F · Difusión</span>
       <span class="chip" data-filter="G">G · Validación</span>
     </div>
-    <div class="result-count" id="resultCount">22 entregables</div>
+    <div class="result-count" id="resultCount">24 entregables</div>
   </div>
 </div>
 
@@ -337,6 +339,8 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
 
 <script>
 const ENTREGABLES = [
+  {block:"R",code:"01",title:"Paquete de Entregables FIMPES",desc:"Documento maestro de cierre que integra el inventario consolidado de entregables, evidencias, formatos, manuales, instrumentos, software, productos científicos y validación internacional del proyecto.",file:"01_Paquete_Entregables_FIMPES.pdf",format:"PDF",pages:null,status:"done",statusLabel:"Principal"},
+  {block:"R",code:"02",title:"Informe Técnico Final FIMPES",desc:"Reporte final consolidado del proyecto Beca Santander–FIMPES Investigación 2025. Presenta objetivos, metodología, resultados, trazabilidad, alineación estratégica, productos generados, sostenibilidad y conclusiones.",file:"02_Informe_Tecnico_Final_FIMPES.pdf",format:"PDF",pages:null,status:"done",statusLabel:"Principal"},
   {block:"A",code:"A1",title:"Propuesta técnica original",desc:"Propuesta entregada en convocatoria 2025: justificación, objetivos, metodología, cronograma, presupuesto, entregables comprometidos, CVs.",file:"A1_Propuesta_Tecnica_original.pdf",format:"PDF",pages:29,status:"done",statusLabel:"Entregado"},
   {block:"A",code:"A2",title:"Informe diagnóstico y alineación estratégica",desc:"Análisis de demandas industriales del Bajío, capacidades ULSB, brechas, consulta con sector productivo. Decisión justificada de operacionalizar DIC + INV.",file:"A2_Informe_Diagnostico_Alineacion.pdf",format:"PDF",pages:24,status:"done",statusLabel:"Entregado"},
   {block:"A",code:"A3",title:"Análisis funcional y perfiles técnicos",desc:"Descomposición funcional INV/DIC, vinculación con procesos productivos, perfil objetivo (profesional I+D), distribución horaria por nivel.",file:"A3_Analisis_Funcional_Perfiles_Tecnicos.pdf",format:"PDF",pages:18,status:"done",statusLabel:"Entregado"},
@@ -362,6 +366,7 @@ const ENTREGABLES = [
 ];
 
 const BLOCKS = {
+  R:{title:"Reporte final y paquete maestro",sub:"Acceso principal al paquete consolidado y al informe técnico final"},
   A:{title:"Documentos de planeación y marco",sub:"Diagnóstico, propuesta, marco de competencias y estructura curricular"},
   B:{title:"Manuales técnicos del participante",sub:"Microcredenciales DIC e INV · Material extendido FEA"},
   C:{title:"Instrumentos de evaluación",sub:"Rúbricas, checklists y criterios cuantitativos por desempeño"},
