@@ -134,14 +134,7 @@ main{padding:60px 0 80px}
 .modal-close{width:36px;height:36px;border-radius:4px;background:transparent;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-soft);transition:all .15s}
 .modal-close:hover{background:var(--line-soft);color:var(--ink)}
 .modal-body{flex:1;background:var(--paper);border-radius:0 0 var(--radius) var(--radius);overflow:hidden;position:relative}
-.modal-body iframe,.modal-body object{width:100%;height:100%;border:0;display:block}
-.pdf-fallback{height:100%;display:flex;align-items:center;justify-content:center;padding:40px;text-align:center;background:#f8fafc;color:var(--ink-soft);font-family:"DM Sans",system-ui,sans-serif}
-.pdf-fallback-box{max-width:520px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-card)}
-.pdf-fallback-box h4{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;font-weight:500;color:var(--ulsb-blue-deep);margin:0 0 10px}
-.pdf-fallback-box p{margin:0 0 18px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
-.pdf-fallback-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.pdf-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--paper);color:var(--muted);font-size:14px;z-index:0}
-.pdf-loading.hidden{display:none}
+.modal-body iframe{width:100%;height:100%;border:0;display:block}
 @media(max-width:600px){.modal-backdrop.open{padding:0}.modal-header{border-radius:0}.modal-body{border-radius:0}.modal-title h3{font-size:.9rem}.modal-actions .btn span{display:none}}
 
 .notes{background:var(--paper);border-top:1px solid var(--line);padding:60px 0}
@@ -172,7 +165,6 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       <span class="mono" style="text-transform:uppercase;letter-spacing:.05em;font-size:11.5px">Beca Santander–FIMPES Investigación 2025</span>
     </div>
     <nav class="topbar-nav">
-      <a href="#bloque-R">Reporte final</a>
       <a href="#bloque-A">Planeación</a>
       <a href="#bloque-B">Manuales</a>
       <a href="#bloque-C">Evaluación</a>
@@ -209,8 +201,8 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       </div>
       <div class="stats">
         <div class="stats-grid">
-          <div><div class="stat-num"><em>24</em></div><div class="stat-label">Entregables</div></div>
-          <div><div class="stat-num"><em>8</em></div><div class="stat-label">Bloques</div></div>
+          <div><div class="stat-num"><em>22</em></div><div class="stat-label">Entregables</div></div>
+          <div><div class="stat-num"><em>7</em></div><div class="stat-label">Bloques</div></div>
           <div><div class="stat-num">~<em>650</em></div><div class="stat-label">Páginas</div></div>
         </div>
       </div>
@@ -226,7 +218,6 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
     </div>
     <div class="chips" id="chips">
       <span class="chip active" data-filter="all">Todos</span>
-      <span class="chip" data-filter="R">R · Reporte final</span>
       <span class="chip" data-filter="A">A · Planeación</span>
       <span class="chip" data-filter="B">B · Manuales</span>
       <span class="chip" data-filter="C">C · Evaluación</span>
@@ -235,7 +226,7 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       <span class="chip" data-filter="F">F · Difusión</span>
       <span class="chip" data-filter="G">G · Validación</span>
     </div>
-    <div class="result-count" id="resultCount">24 entregables</div>
+    <div class="result-count" id="resultCount">22 entregables</div>
   </div>
 </div>
 
@@ -266,19 +257,7 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
     </div>
   </div>
   <div class="modal-body">
-    <div class="pdf-loading" id="pdfLoading">Cargando visor PDF…</div>
-    <object id="modalObject" data="" type="application/pdf" aria-label="Visor PDF">
-      <div class="pdf-fallback">
-        <div class="pdf-fallback-box">
-          <h4>El visor embebido no pudo cargar el PDF</h4>
-          <p>El archivo existe y puede abrirse en una pestaña nueva o descargarse. Algunos navegadores bloquean PDFs dentro de ventanas embebidas, porque aparentemente incluso ver un PDF necesita drama.</p>
-          <div class="pdf-fallback-actions">
-            <a class="btn btn-primary" id="modalFallbackOpen" href="#" target="_blank" rel="noopener" style="flex:0 0 auto">Abrir en pestaña nueva</a>
-            <a class="btn btn-ghost" id="modalFallbackDownload" href="#" download style="flex:0 0 auto">Descargar PDF</a>
-          </div>
-        </div>
-      </div>
-    </object>
+    <iframe id="modalIframe" src="" title="Visor PDF" allow="fullscreen"></iframe>
   </div>
 </div>
 
@@ -294,12 +273,13 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
       </ul>
     </div>
     <div>
-      <h3>G1 · Estancia UniLaSalle Amiens</h3>
+      <h3>G1 · Estancia UniLaSalle Amiens completada</h3>
       <ul>
-        <li><strong>Periodo:</strong> 18–29 de mayo de 2026.</li>
-        <li><strong>Validador internacional:</strong> Prof. Jérôme Fortin. Apoyo de laboratorio: Sébastian Gomez (PAUC).</li>
-        <li><strong>Contenido:</strong> versión intensiva de 15 h combinando DIC y escaneo 3D, conservando secuencia temática y criterios de evaluación de las microcredenciales formales.</li>
-        <li><strong>Integración de evidencias:</strong> registros fotográficos, listas de asistencia, productos de los participantes y constancia firmada se integran al paquete mediante addenda posterior al regreso de la estancia (≥ 30 mayo 2026).</li>
+        <li><strong>Periodo:</strong> 18–29 de mayo de 2026. Curso piloto: 18–22 mayo (15 h). Actividades institucionales: 25–29 mayo.</li>
+        <li><strong>Validador in situ:</strong> Mtro. Sébastien Gomes, responsable de la Unidad USINE 4.0.</li>
+        <li><strong>Observador académico:</strong> Dr. Arnaud Dujany (Coutu), Directeur R&amp;D — Campus d'Amiens, Directeur adjoint — Unité de recherche GeNumEr.</li>
+        <li><strong>Cohorte:</strong> 5 estudiantes Bac+5 de UniLaSalle Amiens. Distribución 27% teoría / 73% práctica.</li>
+        <li><strong>Resultados:</strong> 55/55 criterios cuantitativos cumplidos. Dos dictámenes institucionales firmados (operativo + académico).</li>
       </ul>
     </div>
   </div>
@@ -339,8 +319,6 @@ footer a:hover{color:#fff;border-bottom-color:var(--ulsb-gold)}
 
 <script>
 const ENTREGABLES = [
-  {block:"R",code:"01",title:"Paquete de Entregables FIMPES",desc:"Documento maestro de cierre que integra el inventario consolidado de entregables, evidencias, formatos, manuales, instrumentos, software, productos científicos y validación internacional del proyecto.",file:"01_Paquete_Entregables_FIMPES.pdf",format:"PDF",pages:null,status:"done",statusLabel:"Principal"},
-  {block:"R",code:"02",title:"Informe Técnico Final FIMPES",desc:"Reporte final consolidado del proyecto Beca Santander–FIMPES Investigación 2025. Presenta objetivos, metodología, resultados, trazabilidad, alineación estratégica, productos generados, sostenibilidad y conclusiones.",file:"02_Informe_Tecnico_Final_FIMPES.pdf",format:"PDF",pages:null,status:"done",statusLabel:"Principal"},
   {block:"A",code:"A1",title:"Propuesta técnica original",desc:"Propuesta entregada en convocatoria 2025: justificación, objetivos, metodología, cronograma, presupuesto, entregables comprometidos, CVs.",file:"A1_Propuesta_Tecnica_original.pdf",format:"PDF",pages:29,status:"done",statusLabel:"Entregado"},
   {block:"A",code:"A2",title:"Informe diagnóstico y alineación estratégica",desc:"Análisis de demandas industriales del Bajío, capacidades ULSB, brechas, consulta con sector productivo. Decisión justificada de operacionalizar DIC + INV.",file:"A2_Informe_Diagnostico_Alineacion.pdf",format:"PDF",pages:24,status:"done",statusLabel:"Entregado"},
   {block:"A",code:"A3",title:"Análisis funcional y perfiles técnicos",desc:"Descomposición funcional INV/DIC, vinculación con procesos productivos, perfil objetivo (profesional I+D), distribución horaria por nivel.",file:"A3_Analisis_Funcional_Perfiles_Tecnicos.pdf",format:"PDF",pages:18,status:"done",statusLabel:"Entregado"},
@@ -361,12 +339,11 @@ const ENTREGABLES = [
   {block:"F",code:"F1",title:"Artículo Q1 — Optics and Lasers in Engineering",desc:"Parra-Michel, Ovalle-Magallanes, Aguilar-Vargas (2026). \"Physics-informed hybrid U-Net architecture for phase-to-height reconstruction…\" Vol. 201, art. 109693.",file:"F1_Articulo_Q1_Optics.pdf",format:"PDF",pages:16,status:"published",statusLabel:"Publicado"},
   {block:"F",code:"F2",title:"Artículo de congreso — ICECET 2026 (Roma, Italia)",desc:"\"Solving the Phase Unwrapping Problem in Dual Divergent Projection Systems Using a Physics-Informed Neural Network.\" IEEE 979-8-3315-3208-0/26.",file:"F2_Articulo_de_congreso_ICECET_2026.pdf",format:"PDF",pages:5,status:"done",statusLabel:"Aceptado"},
   {block:"F",code:"F3",title:"Perfil único del investigador",desc:"CV resumido y perfil de Google Académico actualizado para el cierre formal del proyecto.",file:"F3_Perfil_Unico_del_Investigador.pdf",format:"PDF",pages:16,status:"done",statusLabel:"Entregado"},
-  {block:"G",code:"G1",title:"Curso piloto en UniLaSalle Amiens — DIC + Escaneo 3D",desc:"Estancia de validación internacional 18–29 mayo 2026. Versiones intensivas de prueba piloto para DIC e INV. Validador: Prof. Jérôme Fortin. Evidencias en sitio se integran mediante addenda posterior.",file:null,format:"Evidencias en sitio",pages:null,status:"programmed",statusLabel:"Programado"},
+  {block:"G",code:"G1",title:"Reporte de Estancia UniLaSalle Amiens — DIC + Escaneo 3D",desc:"Curso piloto intensivo de 15 h impartido del 18–22 mayo 2026 a 5 estudiantes Bac+5. Validador: Mtro. Sébastien Gomes (USINE 4.0). Observador académico: Dr. Arnaud Dujany (DRD Amiens / GeNumEr). Cohorte: 55/55 criterios obligatorios cumplidos.",file:"G1_Reporte_Estancia_UniLaSalle_Amiens.pdf",format:"PDF",pages:26,status:"done",statusLabel:"Entregado"},
   {block:"G",code:"G2",title:"Carta-respuesta UniLaSalle Amiens",desc:"Comunicación formal de aceptación y plan de la estancia internacional.",file:"G2_Carta_respuesta_UniLaSalle_Amiens.pdf",format:"PDF",pages:21,status:"done",statusLabel:"Entregado"},
 ];
 
 const BLOCKS = {
-  R:{title:"Reporte final y paquete maestro",sub:"Acceso principal al paquete consolidado y al informe técnico final"},
   A:{title:"Documentos de planeación y marco",sub:"Diagnóstico, propuesta, marco de competencias y estructura curricular"},
   B:{title:"Manuales técnicos del participante",sub:"Microcredenciales DIC e INV · Material extendido FEA"},
   C:{title:"Instrumentos de evaluación",sub:"Rúbricas, checklists y criterios cuantitativos por desempeño"},
@@ -439,33 +416,17 @@ function openPDF(code){
   const e = ENTREGABLES.find(x=>x.code===code);
   if(!e || !e.file) return;
   const url = DOC_PATH + e.file;
-  const viewerURL = url + "#toolbar=1&navpanes=0&scrollbar=1&view=FitH";
-
   document.getElementById("modalCode").textContent = e.code;
   document.getElementById("modalTitle").textContent = e.title;
+  document.getElementById("modalIframe").src = url + "#view=FitH";
   document.getElementById("modalDownload").href = url;
   document.getElementById("modalOpen").href = url;
-  document.getElementById("modalFallbackOpen").href = url;
-  document.getElementById("modalFallbackDownload").href = url;
-
-  const loading = document.getElementById("pdfLoading");
-  const objectViewer = document.getElementById("modalObject");
-  loading.classList.remove("hidden");
-  objectViewer.data = viewerURL;
-
-  window.setTimeout(()=>{
-    loading.classList.add("hidden");
-  }, 900);
-
   document.getElementById("pdfModal").classList.add("open");
   document.body.classList.add("modal-open");
 }
 function closePDF(){
   document.getElementById("pdfModal").classList.remove("open");
-  document.getElementById("modalObject").data = "";
-  document.getElementById("modalFallbackOpen").href = "#";
-  document.getElementById("modalFallbackDownload").href = "#";
-  document.getElementById("pdfLoading").classList.remove("hidden");
+  document.getElementById("modalIframe").src = "";
   document.body.classList.remove("modal-open");
 }
 document.getElementById("modalClose").addEventListener("click", closePDF);
@@ -505,3 +466,4 @@ document.querySelectorAll(".logo-slot").forEach(slot=>{
 </script>
 </body>
 </html>
+
